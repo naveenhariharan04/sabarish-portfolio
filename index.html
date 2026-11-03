@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sabarish R S Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: single column, textured burgundy with champagne gold, matching the visiting card; work shown as browser-window mockups */
+:root{
+  --bg:#3B0D18; --surface:#4A1522; --line:#6B2D3A; --fg:#F5EFE2; --muted:#D6C3B2; --accent:#D4B47A; --accent-ink:#2A0810;
+  --display:'Cormorant Garamond', Georgia, serif; --body:'IBM Plex Sans', system-ui, sans-serif; --mono:'IBM Plex Mono', ui-monospace, monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background-color:var(--bg);background-image:linear-gradient(rgba(40,6,14,.35),rgba(40,6,14,.35)),url(bg.png);background-size:cover;background-attachment:fixed;background-position:center;color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+.label{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+header.top{display:flex;justify-content:space-between;align-items:center;padding-block:24px;gap:16px;flex-wrap:wrap}
+.mark{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700}
+.mark span.logo{width:40px;height:40px;border:2px solid var(--accent);border-radius:10px;display:grid;place-items:center;color:var(--accent);font-size:15px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:10px;font-weight:500;text-decoration:none;border:1px solid var(--line);color:var(--fg);background:transparent;font:inherit;cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.hero{padding-block:56px 72px;display:grid;gap:24px}
+.hero h1{font-size:clamp(40px,7vw,76px);line-height:1.05;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{max-width:60ch;color:var(--muted);font-size:19px;margin:0}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+section{padding-block:56px;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:10px;margin-bottom:32px}
+.sec-head h2{font-size:clamp(28px,4vw,40px)}
+.project{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center}
+@media (max-width:820px){.project{grid-template-columns:1fr}}
+.browser{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#F2F8FB}
+.browser .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--surface)}
+.browser .bar i{width:10px;height:10px;border-radius:50%;background:var(--line);display:block}
+.browser .bar .url{margin-left:10px;font-family:var(--mono);font-size:12px;color:var(--muted);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.site{padding:28px;color:#0B3B57;font-family:var(--body);display:grid;gap:14px;background:linear-gradient(160deg,#E6F4FA,#FFFFFF)}
+.site .nav{display:flex;justify-content:space-between;font-size:12px;font-weight:500}
+.site .nav b{font-family:var(--display)}
+.site h3{font-size:clamp(20px,3vw,28px);line-height:1.2;color:#073247}
+.site .chips{display:flex;flex-wrap:wrap;gap:6px}
+.site .chips span{font-size:11px;padding:4px 10px;border-radius:99px;background:#D4EEF8;color:#0B4A6B;font-weight:500}
+.site .cta{justify-self:start;font-size:12px;background:#0B6E99;color:#fff;padding:8px 14px;border-radius:8px}
+.project .info{display:grid;gap:16px}
+.project .info h3{font-size:28px}
+.project .info p{margin:0;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font-family:var(--mono);font-size:12px;padding:5px 10px;border:1px solid var(--line);border-radius:6px;color:var(--muted)}
+.slot{margin-top:32px;border:1px dashed var(--line);border-radius:14px;padding:28px;color:var(--muted);text-align:center}
+.services{display:flex;flex-wrap:wrap;gap:16px}
+.services div{flex:1 1 300px;background:rgba(0,0,0,.18);border:1px solid var(--line);border-radius:12px;padding:26px;display:grid;gap:8px;align-content:start}
+.services h3{font-size:24px}
+.services p{margin:0;color:var(--muted);font-size:15px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:24px;counter-reset:s;padding:0;margin:0;list-style:none}
+.steps li{display:grid;gap:6px;counter-increment:s}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);color:var(--accent);font-size:14px}
+.steps b{font-family:var(--display);font-size:23px}
+.steps span{color:var(--muted);font-size:15px}
+.contact{display:grid;gap:14px;max-width:560px}
+.line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);border-radius:12px;flex-wrap:wrap}
+.line .v{font-family:var(--display);font-size:18px;user-select:all;min-width:0;overflow-wrap:anywhere}
+.line small{display:block;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+footer{padding-block:32px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="mark"><span class="logo">SR</span>Sabarish R S</div>
+    <a class="btn primary" href="https://wa.me/918072545434" target="_blank" rel="noopener">WhatsApp me</a>
+  </header>
+
+  <div class="hero">
+    <span class="label">Freelance web designer · Coimbatore</span>
+    <h1>Websites that make local businesses <em>look as good as their work.</em></h1>
+    <p>I design and build fast, mobile-friendly websites for companies in Coimbatore and across Tamil Nadu, from the first sketch to the site going live.</p>
+    <div class="row">
+      <a class="btn primary" href="#work">See my work</a>
+      <a class="btn" href="#contact">Get a quote</a>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="sec-head"><span class="label">Selected work</span><h2>Recent projects</h2></div>
+    <div class="project">
+      <div class="browser" aria-hidden="true">
+        <div class="bar"><i></i><i></i><i></i><span class="url">kavinaquatech · Home</span></div>
+        <div class="site">
+          <div class="nav"><b>Kavin Aqua Technology</b><span>Services · Products · Contact</span></div>
+          <h3>Water &amp; Wastewater Treatment Solutions in Coimbatore</h3>
+          <div class="chips"><span>STP</span><span>ETP</span><span>RO</span><span>DM</span><span>UF</span><span>MBR</span></div>
+          <span class="cta">Talk about your water needs</span>
+        </div>
+      </div>
+      <div class="info">
+        <span class="label">Business website</span>
+        <h3>Kavin Aqua Technology</h3>
+        <p>A full company website for a Coimbatore water-treatment firm. It covers their STP, ETP, RO and MBR plant services, products and chemicals, NABL lab analysis, a step-by-step delivery process, and an enquiry section.</p>
+        <div class="tags"><span>Responsive</span><span>Scroll animations</span><span>Service pages</span><span>Enquiry form</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="label">Services</span><h2>What I build</h2></div>
+    <div class="services">
+      <div><h3>Business websites</h3><p>Multi-page company sites with services, gallery and enquiry form.</p></div>
+      <div><h3>E-commerce</h3><p>Online stores with product listings, cart and payment setup.</p></div>
+      <div><h3>Landing pages</h3><p>Single pages for a product, offer or campaign, built to get enquiries.</p></div>
+      <div><h3>Redesign</h3><p>Old or slow website? I rebuild it modern, fast and mobile-friendly.</p></div>
+      <div><h3>Hosting &amp; maintenance</h3><p>Domain, hosting, updates and fixes so your site stays online.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="label">How it works</span><h2>From call to launch</h2></div>
+    <ol class="steps">
+      <li><b>Discuss</b><span>We talk about your business, pages and budget.</span></li>
+      <li><b>Design</b><span>You see the layout and colours before I build.</span></li>
+      <li><b>Build</b><span>I develop the site and test it on phone and desktop.</span></li>
+      <li><b>Launch</b><span>Your site goes live on your domain, with support after.</span></li>
+    </ol>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head"><span class="label">Contact</span><h2>Let's build your website</h2></div>
+    <div class="contact">
+      <div class="line"><div><small>Phone / WhatsApp</small><span class="v" id="ph">+91 80725 45434</span></div><button class="btn" type="button" data-copy="+918072545434">Copy</button></div>
+      <div class="line"><div><small>Email</small><span class="v">rssabarish85@gmail.com</span></div><button class="btn" type="button" data-copy="rssabarish85@gmail.com">Copy</button></div>
+      <div class="line"><div><small>Location</small><span class="v">Coimbatore, Tamil Nadu</span></div></div>
+      <a class="btn primary" href="https://wa.me/918072545434" target="_blank" rel="noopener" style="justify-self:start">Message on WhatsApp</a>
+    </div>
+  </section>
+</div>
+<footer><div class="wrap">© 2026 Sabarish R S · Freelance Website Designer &amp; Developer</div></footer>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)};
+    try{navigator.clipboard.writeText(b.dataset.copy).then(done).catch(()=>sel(b))}catch(e){sel(b)}
+  });
+});
+function sel(b){const v=b.parentElement.querySelector('.v');const r=document.createRange();r.selectNodeContents(v);const s=getSelection();s.removeAllRanges();s.addRange(r)}
+</script>
+</body>
+</html>
